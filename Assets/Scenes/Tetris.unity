@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.18431373, g: 0.20784314, b: 0.23921569, a: 0}
+  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -321,7 +321,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -763,7 +763,8 @@ MonoBehaviour:
     tile: {fileID: 11400000, guid: 60965939af2a4e445bd3fe44e379839f, type: 2}
   - tetromino: 6
     tile: {fileID: 11400000, guid: 76eed83275b9bf24da769a13855170b1, type: 2}
-  spawnPosition: {x: 0, y: 0, z: 0}
+  boardSize: {x: 10, y: 20}
+  spawnPosition: {x: -1, y: 8, z: 0}
 --- !u!114 &1369721724
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,15 +6,16 @@ public class Board : MonoBehaviour
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
     public TetrominoData[] tetrominoes;
-    public Vector3Int spawnPosition;
+    // public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
     public Vector2Int boardSize = new Vector2Int(10, 20);
+    public Vector3Int spawnPosition;
     public RectInt Bounds{
         get{
-             Vector2Int position = Vector2Int(-this.boardSize.x/2, -this.boardSize.y/2);
+             Vector2Int position = new Vector2Int(-this.boardSize.x/2, -this.boardSize.y/2);
              return new RectInt(position, this.boardSize); 
         }
     }
-    public void Awake(){
+    private void Awake(){
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
         for(int i=0; i < this.tetrominoes.Length ;i++){
@@ -24,8 +25,10 @@ public class Board : MonoBehaviour
     private void Start(){
         SpawnPiece();
     }
-    public void SpawnPiece(){
+    public void SpawnPiece()
+    {
         TetrominoData data = this.tetrominoes[Random.Range(0, this.tetrominoes.Length)];
+
         this.activePiece.Initialize(this, this.spawnPosition, data);
         Set(this.activePiece);
     }
