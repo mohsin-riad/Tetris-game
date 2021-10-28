@@ -17,9 +17,9 @@ public class Piece : MonoBehaviour
         this.data = data;
         this.position = position;
         this.rotationIndex = 0;
-        this.stepTime = lockTime.time + this.stepDelay;
+        this.stepTime = Time.time + this.stepDelay;
         this.lockTime = 0f;
-        
+
         if(this.cells == null){
             this.cells = new Vector3Int[data.cells.Length];
         }
@@ -29,7 +29,7 @@ public class Piece : MonoBehaviour
     }
     private void Update(){
         this.board.Clear(this);
-        
+        this.lockTime = Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Q)){
             Rotate(-1);
         }
@@ -50,14 +50,29 @@ public class Piece : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             HardDrop();
         }
-
-
+         
+        if(Time.time >= this.stepTime){
+            Step();
+        }
+         
         this.board.Set(this);
+    }
+    private void Step(){
+        this.stepTime = Time.time + this.stepDelay;
+        Move(Vector2Int.down);
+        if(this.lockTime >= this.lockDelay){
+            Lock();
+        }
     }
     private void HardDrop(){
         while(Move(Vector2Int.down)){
             continue;
         }
+        Lock();
+    }
+    private void Lock(){
+        this.board.Set(this);
+        this.board.SpawnPiece();
     }
     private bool Move(Vector2Int translation){
         Vector3Int newPosition = this.position;
@@ -67,6 +82,7 @@ public class Piece : MonoBehaviour
         bool valid = this.board.IsValidPos(this, newPosition);
         if(valid){
             this.position = newPosition;
+            this.lockTime = 0f;
         }
         return valid;
     }
