@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 536026108}
   - component: {fileID: 536026107}
+  - component: {fileID: 536026109}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -250,6 +251,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536026109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536026106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19870ad889775394e84731e85b23e97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile: {fileID: 11400000, guid: 9ea80ec6be6d03a408ce93d79a327ad6, type: 2}
+  mainBoard: {fileID: 1369721723}
+  trackingPiece: {fileID: 1369721724}
 --- !u!1 &626588072
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,3 +793,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c499b05ee359714993373ce56ba91ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stepDelay: 0.4
+  lockDelay: 0.5
