@@ -8,8 +8,8 @@ public class Piece : MonoBehaviour
     public Vector3Int position { get; private set; }
     public int rotationIndex { get; private set; }
 
-    public float stepDelay = 0.4f;
-    public float lockDelay = 0.5f;
+    public float stepDelay = 4f;
+    public float lockDelay = 1f;
     private float stepTime;
     private float lockTime;
     public void Initialize(Board board, Vector3Int position, TetrominoData data){
