@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
 public class Board : MonoBehaviour
 {
+    Highscore a;
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
     public TetrominoData[] tetrominoes;
@@ -39,6 +39,8 @@ public class Board : MonoBehaviour
     }
     private void GameOver(){
         this.tilemap.ClearAllTiles();
+        a = GameObject.FindGameObjectWithTag("TagA").GetComponent<Highscore>();
+        a.clearScore();
     }
     public void Set(Piece piece){
         for(int i=0; i < piece.cells.Length ;i++){
@@ -103,6 +105,9 @@ public class Board : MonoBehaviour
             }
             row++;
         }
+        a = GameObject.FindGameObjectWithTag("TagA").GetComponent<Highscore>();
+        a.addScore();
+
     }
 }
 
